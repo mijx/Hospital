@@ -1,0 +1,38 @@
+<body>
+  <header>
+    <h1>Listas de pacientes</h1>
+  </header>
+  
+  <table>
+    <thead>
+      <tr>
+        <th>Nombres</th>
+        <th>Apellidos</th>
+        <th>Número de Cédula</th>
+        <th>Edad</th>
+        <th>Teléfono</th>
+      </tr>
+    </thead>
+
+    <tbody id="patients-table-body">
+      {{#each resultado}}
+      <tr>
+        <td>{{nombres}}</td>
+        <td>{{apellidos}}</td>
+        <td>{{cedula}}</td>
+        <td>{{formatoFecha fecha_nacimiento}}</td>
+        <td>{{telefono}}</td>
+      </tr>
+      {{/each}}
+    </tbody>
+  </table>
+
+  <div class="button_container">
+    <a href="../index.html">Volver</a>
+  </div>
+  
+  <footer>
+    <h3>Realizado por: Stephanie Pérez</h2>
+    <p>Grupo 1 Desarrollo Web Backend</p>
+  </footer>
+</body>

@@ -40,6 +40,36 @@ router.post('/register-doctor', (req, res) => {
   })
 })
 
+//Enrutamiento para visualizar pacientes de la base de datos
+router.get('/patients_list', (req, res) => {
+  conexion.query('SELECT * FROM pacientes;', (error, resultado) => {
+    if (error) {
+      console.log('Ocurrio un error en la ejecución', error)
+      res.status(500).send('Error en la ejecución')
+    } else {
+      res.status(200).render('patients_list', { title: 'Patients List', resultado: resultado })
+    }
+  })
+})
+
+// Enrutamiento para agregar un paciente a la base de datos
+router.post('/register-patient', (req, res) => {
+  const nombres = req.body.nombres
+  const apellidos = req.body.apellidos
+  const cedula = req.body.cedula
+  const fecha_nacimiento =req.body.fecha_nacimiento
+  const telefono = req.body.telefono
+  
+  conexion.query(`INSERT INTO pacientes (cedula, nombres, apellidos, fecha_nacimiento, telefono) VALUES (${cedula}, '${nombres}', '${apellidos}', '${fecha_nacimiento}', '${telefono}')`, (error, resultado) => {
+    if (error) {
+      console.log(error)
+      res.status(500).send('Ocurrio un error en la consulta')
+    } else {
+      res.status(200).redirect('/')
+    }
+  })
+})
+
 
 
 
