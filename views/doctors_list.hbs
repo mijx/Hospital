@@ -1,0 +1,39 @@
+<header>
+    <h1>Listas de personal médico</h1>
+  </header>
+  <table>
+    <thead>
+      <tr>
+        <th>Nombres</th>
+        <th>Apellidos</th>
+        <th>Número de Cédula</th>
+        <th>Número de consultorio</th>
+        <th>Teléfono</th>
+        <th>Correo</th>
+        <th>Especialidad</th>
+      </tr>
+    </thead>
+
+    <tbody id="doctors-table-body">
+        {{#each resultado}}
+        <tr>
+            <td>{{nombres}}</td>
+            <td>{{apellidos}}</td>
+            <td>{{cedula}}</td>
+            <td>{{consultorio}}</td>
+            <td>{{telefono}}</td>
+            <td>{{correo}}</td>
+            <td>{{especialidad}}</td>
+        </tr>
+        {{/each}}
+    </tbody>
+  </table>
+
+  <div class="button_container">
+    <a href="../index.html">Volver</a>
+  </div>
+  
+  <footer>
+    <h3>Realizado por: Stephanie Pérez</h2>
+    <p>Grupo 1 Desarrollo Web Backend</p>
+  </footer>

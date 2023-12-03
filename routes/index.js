@@ -7,6 +7,19 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
 });
 
+// Enrutamiento para visualizar los medicos de la base de datos
+router.get('/doctors_list', (req, res) => {
+  conexion.query('SELECT * FROM medicos;', (error, resultado) => {
+    if (error) {
+      console.log('Ocurrio un error en la ejecución', error)
+      res.status(500).send('Error en la ejecución')
+    } else {
+      console.log(resultado)
+      res.status(200).render('doctors_list', { title:'Doctors List',resultado: resultado })
+    }
+  })
+})
+
 // Enrutamiento para agregar un medico a la base de datos
 router.post('/register-doctor', (req, res) => {
   const nombres = req.body.nombres
@@ -22,7 +35,7 @@ router.post('/register-doctor', (req, res) => {
       console.log('Ocurrio un error en la ejecución', error)
       res.status(500).send('Error en la ejecución')
     } else {
-      res.status(200).redirect('/')
+      res.status(200).redirect('/doctors_list')
     }
   })
 })
