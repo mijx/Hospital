@@ -65,7 +65,7 @@ router.post('/register-patient', (req, res) => {
       console.log(error)
       res.status(500).send('Ocurrio un error en la consulta')
     } else {
-      res.status(200).redirect('/')
+      res.status(200).redirect('/patients_list')
     }
   })
 })
@@ -107,7 +107,7 @@ router.post('/registrar_cita', (req, res) => {
       console.log('Ocurrio un error en la ejecución', error)
       res.status(500).send('Error en la ejecución')
     } else {
-      res.status(200).redirect('/')
+      res.status(200).redirect('/consulta_citas')
     }
   })
 })
