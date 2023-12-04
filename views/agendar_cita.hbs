@@ -1,0 +1,32 @@
+<body>
+  <header>
+    <h1>Agende su Cita Médica</h1>
+  </header>
+  
+  <form id="agendar_cita" method="post" action="/registrar_cita">
+    <label for="cedula">Número de cedula:</label><br>
+    <input type="number" id="cedula" name="cedula" required><br>
+
+    <label for="fecha_cita">Fecha de cita medica:</label><br>
+    <input type="date" id="fecha_cita" name="fecha_cita" required><br>
+
+    <label for="medico">Personal Médico</label><br>
+    <select id="medico" name="medico" required>
+      <option value="">---------- Seleccione una opcion -----------</option>
+      {{#each resultado}}
+      <option value={{cedula}}>{{nombres}} {{apellidos}}</option>
+      {{/each}}
+    </select>
+
+    <br><input type="submit" value="Agendar">
+  </form>
+  
+  <div class="button_container">
+    <a href="../index.html">Volver</a>
+  </div>
+  
+  <footer>
+    <h3>Realizado por: Stephanie Pérez</h2>
+    <p>Grupo 1 Desarrollo Web Backend</p>
+  </footer>
+</body>

@@ -4,34 +4,16 @@
 <head lang="es">
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width">
-  <title>Doctors signin</title>
+  <title>Consulta Especialidades</title>
   <link href="../styles/style.css" rel="stylesheet" type="text/css" />
 </head>
 
 <body>
   <header>
-    <h1>Registro personal médico</h1>
+    <h1>Consulta Citas Médicas por Especialidad</h1>
   </header>
   
-  <form id="doctors_form" method="post" action="/register-doctor">
-    <label for="nombres">Nombres</label><br>
-    <input type="text" id="nombres" name="nombres" required><br>
-    
-    <label for="apellidos">Apellidos</label><br>
-    <input type="text" id="apellidos" name="apellidos" required><br>
-    
-    <label for="cedula">Número de cédula</label><br>
-    <input type="number" id="cedula" name="cedula" required><br>
-    
-    <label for="consultorio">Número de consultorio</label><br>
-    <input type="number" id="consultorio" name="consultorio" required><br>
-    
-    <label for="telefono">Teléfono</label><br>
-    <input type="number" id="telefono" name="telefono" required><br>
-    
-    <label for="correo">Correo</label><br>
-    <input type="email" id="correo"  name="correo" required><br>
-    
+  <form id="consulta_especialidades" method="post" action="/consulta_citas">
     <label for="especialidad">Especialidad</label><br>
     <select id="especialidad" name="especialidad" required>
       <option value="">---------- Seleccione una opcion -----------</option>
@@ -45,7 +27,7 @@
       <option value="Radiología">Radiología</option>
     </select>
 
-    <br><input type="submit" value="Registrar">
+    <br><input type="submit" value="Consultar">
   </form>
   
   <div class="button_container">

@@ -70,6 +70,47 @@ router.post('/register-patient', (req, res) => {
   })
 })
 
+//Enrutamiento para consultar medicos de una especialidad
+router.post('/consulta_citas', (req, res) => {
+  const especialidad = req.body.especialidad
+  
+  conexion.query(`SELECT * FROM medicos WHERE especialidad='${especialidad}';`, (error, resultado) => {
+    if (error) {
+      console.log(error)
+      res.status(500).send('Ocurrio un error en la consulta')
+    } else {
+      res.status(200).render('agendar_cita', { title: 'Agendar Cita', resultado })
+    }
+  })
+})
+
+//Enrutamiento para visualizar citas agendadas
+router.get('/listado-citas', (req, res) => {
+  conexion.query(`SELECT fecha_cita, CONCAT(pacientes.nombres,' ',pacientes.apellidos) AS paciente, pacientes.telefono, medicos.especialidad, medicos.consultorio, CONCAT(medicos.nombres,' ', medicos.apellidos) AS medico FROM cita_medica, pacientes, medicos WHERE cedula_medico=medicos.cedula AND cedula_paciente=pacientes.cedula AND fecha_cita >= curdate() order by fecha_cita asc;`, (error, resultado) => {
+    if (error) {
+      console.log('Ocurrio un error en la ejecución', error)
+      res.status(500).send('Error en la ejecución')
+    } else {
+      res.status(200).render('citas', { title: 'Citas Médicas Agendadas', resultado })
+    }
+  })
+})
+
+//Enrutamiento para registrar en base de datos la cita agendada
+router.post('/registrar_cita', (req, res) => {
+  const cc_paciente = req.body.cedula
+  const fecha = req.body.fecha_cita
+  const cc_medico = req.body.medico
+  
+  conexion.query(`INSERT INTO cita_medica (cedula_medico, cedula_paciente, fecha_cita) VALUES (${cc_medico}, '${cc_paciente}', '${fecha}')`, (error) => {
+    if (error) {
+      console.log('Ocurrio un error en la ejecución', error)
+      res.status(500).send('Error en la ejecución')
+    } else {
+      res.status(200).redirect('/')
+    }
+  })
+})
 
 
 

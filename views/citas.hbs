@@ -1,0 +1,37 @@
+<header>
+    <h1>Citas Médicas Agendadas</h1>
+  </header>
+  <table>
+    <thead>
+      <tr>
+        <th>Fecha Cita</th>
+        <th>Paciente</th>
+        <th>Telefono</th>
+        <th>Especialidad</th>
+        <th>Número de consultorio</th>
+        <th>Personal Medico</th>
+      </tr>
+    </thead>
+
+    <tbody id="doctors-table-body">
+        {{#each resultado}}
+        <tr>
+            <td>{{formatoFecha fecha_cita}}</td>
+            <td>{{paciente}}</td>
+            <td>{{telefono}}</td>
+            <td>{{especialidad}}</td>
+            <td>{{consultorio}}</td>
+            <td>{{medico}}</td>
+        </tr>
+        {{/each}}
+    </tbody>
+  </table>
+
+  <div class="button_container">
+    <a href="../index.html">Volver</a>
+  </div>
+  
+  <footer>
+    <h3>Realizado por: Stephanie Pérez</h2>
+    <p>Grupo 1 Desarrollo Web Backend</p>
+  </footer>

@@ -56,12 +56,20 @@ footer{
 
 
 /* Menus de la página de inicio */
-#actions {
+#users {
   text-align: center;
   width: 60%;
   margin: 0 auto;
   margin-top: 100px;
   display: flex;
+  align-items: stretch;
+  justify-content: space-between;
+}
+
+#appointments {
+  text-align: center;
+  width: 60%;
+  margin: 0 auto;
   align-items: stretch;
   justify-content: space-between;
 }
